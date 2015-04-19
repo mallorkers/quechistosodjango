@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
-from usuarios.models import UserProfile
+from users.models import UserProfile
 
 
 class Tag(models.Model):
@@ -11,7 +11,7 @@ class Tag(models.Model):
           return self.tag
 
 
-class Publicacion(models.Model):
+class Publication(models.Model):
 
     STATUS = (
         (0, "Publicado"),
@@ -19,7 +19,7 @@ class Publicacion(models.Model):
         (3, "Eliminado")
     )
 
-    fecha = models.DateTimeField(auto_now=True)
+    date_time = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS)
     body = models.TextField()
     owner = models.OneToOneField(UserProfile)
@@ -29,30 +29,30 @@ class Publicacion(models.Model):
         return "%s" % self.id
 
     class Meta:
-        ordering = ('fecha',)
+        ordering = ('date_time',)
 
-class Moderado(models.Model):
+class Moderate(models.Model):
 
-    VOTOS = (
+    VOTES = (
         (0, "Aprobado"),
         (1, "Rechazado"),
         (2, "Muy Visto")
     )
-    usuario = models.ForeignKey(UserProfile, blank=True, null=True)
-    publicacion = models.ForeignKey(Publicacion)
+    user_profile = models.ForeignKey(UserProfile, blank=True, null=True)
+    publication = models.ForeignKey(Publication)
     session_id = models.CharField(max_length=40, blank=True)
-    fecha_moderacion = models.DateTimeField(auto_now=True)
-    voto = models.IntegerField(choices=VOTOS)
+    date_moderation = models.DateTimeField(auto_now=True)
+    vote = models.IntegerField(choices=VOTES)
 
     def __str__(self):
         return "%s" % self.id
 
 class Comment(models.Model):
 
-    fecha = models.DateTimeField(auto_now=True)
+    date_time = models.DateTimeField(auto_now=True)
     body = models.TextField()
-    publicacion = models.ForeignKey(Publicacion)
-    usuario = models.ForeignKey(UserProfile)
+    publication = models.ForeignKey(Publication)
+    user_profile = models.ForeignKey(UserProfile)
 
     def __str__(self):
         return "%s" % self.id

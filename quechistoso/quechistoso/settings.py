@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Django settings for quechistoso project.
 
@@ -37,8 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'publicaciones',
-    'usuarios'
+    'publications',
+    'users'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +56,8 @@ ROOT_URLCONF = 'quechistoso.urls'
 
 WSGI_APPLICATION = 'quechistoso.wsgi.application'
 
-
+# Configuracion para que django utilice nuestra extensión para autentificar.
+AUTH_PROFILE_MODULE = "users.UserProfile" # Idendificar o definir el perfil de los usuarios (extensión de perfil de usuario)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
