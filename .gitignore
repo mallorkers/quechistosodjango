@@ -1,0 +1,23 @@
+syntax: glob
+# IDE PyCharm
+__pycache__
+
+.idea
+*.py[cdo]
+app.ini
+
+
+!font-awesome.min.css
+# Translations
+*.mo
+
+# Installer logs
+pip-log.txt
+
+# C Extensions
+*.so
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
