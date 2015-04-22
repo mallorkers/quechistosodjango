@@ -23,6 +23,7 @@ class Publication(models.Model):
     status = models.IntegerField(choices=STATUS)
     body = models.TextField()
     owner = models.OneToOneField(UserProfile)
+    session_id = models.CharField(max_length=32, blank=True)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
