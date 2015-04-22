@@ -1,3 +1,7 @@
 Django==1.7
-noise
-django-extensions
+django-extensions==1.5.2
+djangorestframework==3.1.1
+ipdb==0.8
+ipython==3.0.0
+noise==1.2.2
+six==1.9.0
