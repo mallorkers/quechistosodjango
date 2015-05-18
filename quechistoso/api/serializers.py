@@ -1,11 +1,8 @@
 # -*- coding: UTF-8 -*-
 from rest_framework import serializers
-from publications.models import Publication, Moderate
-from users.models import UserProfile
-from publications.models import Comment
+from publications.models import Publication, Moderate, UserProfile, Comment
 
 __author__ = 'ffernandez@apsl.net'
-
 
 
 class ModerateSerializer(serializers.ModelSerializer):

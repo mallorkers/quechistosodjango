@@ -1,11 +1,10 @@
 # -*- coding: UTF-8 -*-
 from serializers import PublicationsSerializer
 from rest_framework import viewsets
-from publications.models import Publication
+from publications.models import Publication, UserProfile
 from serializers import ModerateSerializer
 from publications.models import Moderate
 from api.serializers import UserProfileSerialzer
-from users.models import UserProfile
 
 __author__ = 'ffernandez@apsl.net'
 

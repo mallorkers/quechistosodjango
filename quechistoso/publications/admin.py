@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-from .models import Publication, Comment, Moderate, Tag
+from .models import Publication, Comment, Moderate, Tag, UserProfile
 
 
 # Inline
@@ -18,12 +18,13 @@ class CommentsInline(admin.TabularInline):
     model = Comment
     extra = 1
 
+
 class TagsAdmin(admin.ModelAdmin):
     pass
 
 
 class PublicationAdmin(admin.ModelAdmin):
-    list_display = ('id','status','date_time','owner')
+    list_display = ('id','status','date_time')
     list_filter = ('date_time','status')
     search_fields = ('id','owner')
 
@@ -39,7 +40,15 @@ class ModerateAdmin(admin.ModelAdmin):
     list_filter = ('publication',)
 
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('id','username','email')
 
+    def username(self, object):
+        return object.user.username
+
+    def email(self, object):
+        return object.user.email
+admin.site.register(UserProfile, UserProfileAdmin)
 
 
 

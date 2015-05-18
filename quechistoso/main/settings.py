@@ -54,12 +54,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'quechistoso.urls'
+ROOT_URLCONF = 'main.urls'
 
-WSGI_APPLICATION = 'quechistoso.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 # Configuracion para que django utilice nuestra extensión para autentificar.
-AUTH_PROFILE_MODULE = "users.UserProfile" # Idendificar o definir el perfil de los usuarios (extensión de perfil de usuario)
+AUTH_PROFILE_MODULE = "publications.UserProfile" # Idendificar o definir el perfil de los usuarios (extensión de perfil de usuario)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

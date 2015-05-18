@@ -5,17 +5,18 @@ from api.viewsets import PublicationViewSet
 from api.viewsets import ModerateViewSet
 from api.viewsets import UserViewSet
 from api import views
+from publications.views import PublicationList
 
 router = DefaultRouter()
 router.register(r'publications', PublicationViewSet)
-router.register('moderates', ModerateViewSet)
+router.register(r'moderates', ModerateViewSet)
 router.register(r'users', UserViewSet)
 
 
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'quechistoso.views.home', name='home'),
+    url(r'^$', PublicationList.as_view(), name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/publication/(?P<pk>[0-9]+)/$', views.PublicationDetail.as_view()),

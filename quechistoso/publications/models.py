@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
-from users.models import UserProfile
+from django.contrib.auth.models import User
 
 
 class Tag(models.Model):
@@ -9,6 +9,24 @@ class Tag(models.Model):
 
       def __str__(self):
           return self.tag
+
+
+class UserProfile(models.Model):
+
+    def url(self, filename):
+        ruta = "MultimediaData/users/%s/%s"%(self.user.username,filename)
+        return ruta
+
+    user = models.OneToOneField(User)
+    nick = models.CharField(max_length=50)
+    # profiel_picture = models.ImageField(upload_to=url)
+
+    def __str__(self):
+        return self.user.username
+
+    @property
+    def username(self):
+        return self.user.username
 
 
 class Publication(models.Model):
@@ -22,7 +40,7 @@ class Publication(models.Model):
     date_time = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS)
     body = models.TextField()
-    owner = models.OneToOneField(UserProfile)
+    owner = models.ForeignKey(UserProfile)
     session_id = models.CharField(max_length=32, blank=True)
     tags = models.ManyToManyField(Tag)
 
@@ -31,6 +49,10 @@ class Publication(models.Model):
 
     class Meta:
         ordering = ('date_time',)
+
+
+
+
 
 class Moderate(models.Model):
 
@@ -48,6 +70,7 @@ class Moderate(models.Model):
     def __str__(self):
         return "%s" % self.id
 
+
 class Comment(models.Model):
 
     date_time = models.DateTimeField(auto_now=True)
@@ -57,4 +80,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return "%s" % self.id
+
+
+
 
