@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', PublicationList.as_view(), name='home'),
     url(r'^(?P<pk>\d+)/$', PublicationDetail.as_view(), name='pub_detail'),
+
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/publication/(?P<pk>[0-9]+)/$', views.PublicationDetail.as_view()),

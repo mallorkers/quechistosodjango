@@ -2,60 +2,90 @@
 
 
 {% block content %}
-        <!-- Project One -->
-        {% for publication in publications %}
 
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/150x150" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>{{publication.owner}}</h3>
-                <h4>{{publication.date_time}}</h4>
-                <p>{{publication.body}}</p>
-                {% for tag in publication.tags.all %}
-                <span class="label label-info">{{ tag }}</span>
+<!-- Project One -->
+
+{% for publication in publications %}
+
+<div class="row">
+    <div class="col-md-2">
+        <a href="#">
+            <img class="img-responsive" src="http://placehold.it/200x200" alt="">
+        </a>
+    </div>
+    <div class="col-md-5">
+                 <span class="home-like-count">
+                <i class="fa fa-smile-o"></i>
+                <span>{{publication.likes}}</span>
+                </span>
+                <span class="home-comment-count">
+                <i class="fa fa-comments"></i>
+                {{publication.number_comments}}
+                </span>
+                <span class="home-view-count">
+                <i class="fa fa-eye"></i>
+                {{publication.views}}
+                </span>
+        <span class="label label-info">{{ tag }}</span>
+
+        <h3>{{publication.owner}}</h3>
+        <h4>{{publication.date_time}}</h4>
+
+        <p>{{publication.body}}</p>
+        {% for tag in publication.tags.all %}
+        <span class="label label-info">{{ tag }}</span>
         {% endfor %}
-                </br>
-                </br>
-                <a class="btn btn-primary" href="{% url 'pub_detail' publication.id %}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-         <hr>
-        {% endfor %}
-        <!-- /.row -->
-        {% endblock %}
+        </br>
+        </br>
+        <a class="btn btn-primary" href="{% url 'pub_detail' publication.id %}">Ver <span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+
+</div>
+<hr>
+{% endfor %}
+<!--<div class="col-md-2">-->
+<!--{% for tag in all_tags %}-->
+<!--<span class="label label-info">{{ tag }}</span>-->
+<!--{% endfor %}-->
+<!--</div>-->
+
+
+<!-- /.row -->
+{% endblock %}
+
+<!--Categorias -->
+
 
 {% block pagination %}
- <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
+<!-- Pagination -->
+<div class="row text-center">
+    <div class="col-lg-12">
+        <ul class="pagination">
+            <li>
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /.row -->
 {% endblock %}

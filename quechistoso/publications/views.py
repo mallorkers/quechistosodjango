@@ -30,6 +30,8 @@ class PublicationDetail(DetailView):
     model = Publication
     context_object_name = 'publication'
 
+
+
 # def	 indice2(request):
 #     ultimas_preguntas = Pregunta.objects.all().order_by('­fecha')[:5]
 #     context = {'ultimas_preguntas': ultimas_preguntas }

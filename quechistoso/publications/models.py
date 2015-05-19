@@ -13,12 +13,19 @@ class Tag(models.Model):
 
 class UserProfile(models.Model):
 
+    GENDERS = (
+        ("NE", "No Especificado"),
+        ("M", "Masculino"),
+        ("F", "Femenino"),
+    )
+
     def url(self, filename):
         ruta = "MultimediaData/users/%s/%s"%(self.user.username,filename)
         return ruta
 
     user = models.OneToOneField(User)
     nick = models.CharField(max_length=50)
+    genders = models.CharField(choices=GENDERS, default="NE", max_length=2)
     # profiel_picture = models.ImageField(upload_to=url)
 
     def __str__(self):
@@ -43,6 +50,12 @@ class Publication(models.Model):
     owner = models.ForeignKey(UserProfile)
     session_id = models.CharField(max_length=32, blank=True)
     tags = models.ManyToManyField(Tag)
+    likes = models.PositiveIntegerField(default=0)
+    views = models.PositiveIntegerField(default=0)
+
+    @property
+    def number_comments(self):
+        return self.comment_set.all().count()
 
     def __str__(self):
         return "%s" % self.id

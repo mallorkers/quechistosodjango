@@ -24,7 +24,7 @@ class TagsAdmin(admin.ModelAdmin):
 
 
 class PublicationAdmin(admin.ModelAdmin):
-    list_display = ('id','status','date_time')
+    list_display = ('id','status','date_time','number_comments')
     list_filter = ('date_time','status')
     search_fields = ('id','owner')
 
