@@ -1,0 +1,32 @@
+{% extends 'publications/base.html' %}
+
+    {% block title %}{{publication.body|truncatewords:"15" }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+            <div class="col-md-3">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/150x150" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>{{publication.owner}}</h3>
+                <h4>{{publication.date_time}}</h4>
+                <p>{{publication.body}}</p>
+                {% for tag in publication.tags.all %}
+                <span class="label label-info">{{ tag }}</span>
+        {% endfor %}
+                </br>
+                </br>
+                <a class="btn btn-primary" href="{% url 'pub_detail' publication.id %}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+         <hr>
+
+        {% for comment in publication.comment_set.all %}
+        <h3>{{comment.user_profile}}</h3>
+        <p>{{comment.body}}</p>
+        <p>{{comment.date_time}}</p>
+        {% endfor %}
+{% endblock %}
+
