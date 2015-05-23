@@ -1,8 +1,9 @@
 from rest_framework import generics
-from publications.models import Publication
-from serializers import PublicationDetailSerializer
 from django.http import Http404
 from requests import Response
+
+from apps.publications.models import Publication
+from serializers import PublicationDetailSerializer
 
 
 class PublicationDetail(generics.RetrieveUpdateDestroyAPIView):

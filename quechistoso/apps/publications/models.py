@@ -47,7 +47,7 @@ class Publication(models.Model):
     date_time = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS)
     body = models.TextField()
-    owner = models.ForeignKey(UserProfile)
+    owner = models.ForeignKey(UserProfile, blank=True, null=True)
     session_id = models.CharField(max_length=32, blank=True)
     tags = models.ManyToManyField(Tag)
     likes = models.PositiveIntegerField(default=0)

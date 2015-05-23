@@ -40,8 +40,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'api',
     'django_extensions',
-    'publications',
-    'users'
+    'apps.publications',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,7 +70,7 @@ TEMPLATE_CONTEXT_PROCESSORS =(
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "publications.context_processors.categories_processor",
+    "apps.publications.context_processors.categories_processor",
 
 )
 # Database

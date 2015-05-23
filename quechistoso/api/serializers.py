@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 from rest_framework import serializers
-from publications.models import Publication, Moderate, UserProfile, Comment
+
+from apps.publications.models import Publication, Moderate, UserProfile, Comment
+
 
 __author__ = 'ffernandez@apsl.net'
 
