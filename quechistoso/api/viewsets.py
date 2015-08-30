@@ -1,9 +1,9 @@
 # -*- coding: UTF-8 -*-
 from rest_framework import viewsets
 
-from serializers import PublicationsSerializer
+from api.serializers import PublicationsSerializer
 from apps.publications.models import Publication, UserProfile
-from serializers import ModerateSerializer
+from api.serializers import ModerateSerializer
 from apps.publications.models import Moderate
 from api.serializers import UserProfileSerialzer
 

@@ -3,7 +3,7 @@ from django.http import Http404
 from requests import Response
 
 from apps.publications.models import Publication
-from serializers import PublicationDetailSerializer
+from api.serializers import PublicationDetailSerializer
 
 
 class PublicationDetail(generics.RetrieveUpdateDestroyAPIView):

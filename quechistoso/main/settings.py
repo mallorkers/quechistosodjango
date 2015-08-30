@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'api',
     'django_extensions',
     'apps.publications',
+    'social.apps.django_app.default',
 
 )
 
@@ -102,3 +103,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Backends aut
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# url de redirect despues del login
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+# Keys
+SOCIAL_AUTH_TWITTER_KEY = 'LyrGEgAJbekeCyP4ZSkk95prf'
+SOCIAL_AUTH_TWITTER_SECRET = 'Q9GIkEPc3lckHDtBXX8MVCGCvE5xeTw9habBm8KkLhfvfCk465'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '135271426818761'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0952bf811430d272f6960478b428199c'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/nuevo-usuario/'

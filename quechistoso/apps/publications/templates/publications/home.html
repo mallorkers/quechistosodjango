@@ -1,0 +1,35 @@
+{% extends 'publications/base.html' %}
+{% load publicationtags %}
+{% block body %}
+<!-- Cards con chistes-->
+{% for publication in publications %}
+<!-- Card-->
+<div class="card text-center">
+<!-- Card Header -->
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <p>{{publication.owner|owner}}</p>
+            </div>
+            <div class="col-md-6">
+
+        <h6>{% for tag in publication.tags.all %}
+        <span class="label label-pill label-info">{{ tag }}</span>
+        {% endfor %}
+            </h6>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">titulo</h4>
+
+        <p class="card-text">{{publication.body}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        <a href="{% url 'pub_detail' publication.id %}"> {{publication.date_time}}</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
